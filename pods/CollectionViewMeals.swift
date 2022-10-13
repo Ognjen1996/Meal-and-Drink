@@ -18,7 +18,7 @@ final class CollectionViewMeals: UIViewController {
         layout.itemSize = CGSize(width: 120, height: 120)
         colletionView1.collectionViewLayout = layout
         
-        colletionView1.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
+        colletionView1.register(MealCollectionViewCell.nib(), forCellWithReuseIdentifier: "MealCollectionViewCell")
         colletionView1.delegate = self
         colletionView1.dataSource = self
         
@@ -42,9 +42,10 @@ extension CollectionViewMeals: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
         
         cell.configure(with: UIImage(named: "meal")!)
+        cell.nameLabel.text = "Corba"
        
         
         return cell

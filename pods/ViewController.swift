@@ -9,7 +9,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+
 class ViewController: UIViewController {
+//    weak var delegate: ViewControlerDelegate?
 
     @IBOutlet var drinksButton: UIButton!
     @IBOutlet var mealsButton: UIButton!
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
         fetchData()
         // Do any additional setup after loading the view.
     }
-
+    
     func fetchData() {
         let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
         guard let url = URL(string: baseURL) else {return}
@@ -48,17 +50,18 @@ class ViewController: UIViewController {
     @IBAction func drinksMenu() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "CollectionViewDrinks") as? UIViewController else { return }
-            show(vc, sender: self)
-            
-        }
+        show(vc, sender: self)
+        
+    }
     @IBAction func mealsMenu() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "CollectionViewMeals") as? UIViewController else { return }
-            show(vc, sender: self)
-            
-        }
-
+        show(vc, sender: self)
+        
+    }
+    
 }
+
 
 
 

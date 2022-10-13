@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell {
+class MealCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var label: UILabel!
+    @IBOutlet var imageView1: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
 
     override func awakeFromNib() {
         
@@ -19,11 +19,11 @@ class MyCollectionViewCell: UICollectionViewCell {
         
     }
     public func configure(with image: UIImage){
-        imageView.image = image
+        imageView1.image = image
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "MyCollectionViewCell", bundle: nil)
+        return UINib(nibName: "MealCollectionViewCell", bundle: nil)
     }
 
 }
