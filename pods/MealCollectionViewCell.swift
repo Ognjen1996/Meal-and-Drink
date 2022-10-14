@@ -11,6 +11,8 @@ class MealCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView1: UIImageView!
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var areaLabel: UILabel!
+    @IBOutlet var sourceLabel: UILabel!
 
     override func awakeFromNib() {
         

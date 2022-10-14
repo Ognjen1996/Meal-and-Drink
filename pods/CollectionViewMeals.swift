@@ -45,7 +45,10 @@ extension CollectionViewMeals: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
         
         cell.configure(with: UIImage(named: "meal")!)
-        cell.nameLabel.text = "Corba"
+        cell.nameLabel.text = "Name: Corba"
+        cell.areaLabel.text = "Area: Turkish"
+        cell.sourceLabel.text = "Source"
+//        cell.sourceLabel.toggleUnderline(self)
        
         
         return cell
@@ -53,6 +56,6 @@ extension CollectionViewMeals: UICollectionViewDataSource {
 }
 extension CollectionViewMeals: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width/1, height: 300)
+        return CGSize(width: collectionView.frame.size.width/1, height:250)
     }
 }
