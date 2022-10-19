@@ -110,5 +110,6 @@ struct DrinkModel {
         self.strInstructionsZH = json["strInstructionsZH"].stringValue
         self.strMeasure3 = json["strMeasure3"].stringValue
         self.strIngredient7 = json["strIngredient7"].stringValue
+        self.strDrink = json["strDrink"].stringValue
     }
 }

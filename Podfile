@@ -7,7 +7,7 @@ target 'pods' do
   
 pod 'SwiftyJSON'
 pod 'Alamofire'
-
+pod 'Kingfisher'
 
   # Pods for pods
 

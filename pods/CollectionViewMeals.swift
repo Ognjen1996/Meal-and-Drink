@@ -6,13 +6,28 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 final class CollectionViewMeals: UIViewController {
     
     @IBOutlet var colletionView1: UICollectionView!
-
+    @IBOutlet var textField: UITextField!
+    
+    var meals:[MealModel] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.colletionView1.reloadData()
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 120, height: 120)
@@ -23,7 +38,34 @@ final class CollectionViewMeals: UIViewController {
         colletionView1.dataSource = self
         
 
-        // Do any additional setup after loading the view.
+        fetchDataMeal()
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        fetchDataMeal(usingText: searchText)
+    }
+    
+    func fetchDataMeal(usingText: String = "") {
+        self.meals.removeAll()
+        let baseURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=\(usingText)"
+        guard let url = URL(string: baseURL) else {return}
+        let request = URLRequest(url: url)
+        AF.request(request).responseJSON { data in
+            switch data.result {
+            case .success(let dataJson):
+                let json = JSON(dataJson)
+                
+                let mealsArray = json["meals"].arrayValue
+                
+                mealsArray.forEach { meal in
+                    let parsedMeal = MealModel(json: meal)
+                    self.meals.append(parsedMeal)
+                }
+                
+            case .failure(let error):
+                break
+            }
+        }
     }
 
 }
@@ -35,21 +77,19 @@ extension CollectionViewMeals: UICollectionViewDelegate {
 }
 extension CollectionViewMeals: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.meals.count
     }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
         
-        cell.configure(with: UIImage(named: "meal")!)
-        cell.nameLabel.text = "Name: Corba"
-        cell.areaLabel.text = "Area: Turkish"
-        cell.sourceLabel.text = "Source"
+//        cell.nameLabel.text = "Name: Corba"
+//        cell.areaLabel.text = "Area: Turkish"
+//        cell.sourceLabel.text = "Source"
 //        cell.sourceLabel.toggleUnderline(self)
-       
+        
+        let meals = self.meals[indexPath.row]
+        cell.configure(with: meals)
         
         return cell
     }

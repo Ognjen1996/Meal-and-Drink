@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -95,10 +95,11 @@
                             <constraint firstItem="w2e-Ua-3i3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zP2-Ww-ir3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZXJ-wg-qFp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="51"/>
+            <point key="canvasLocation" x="928.98550724637687" y="50.892857142857139"/>
         </scene>
         <!--Collection View Drinks-->
         <scene sceneID="Ywp-lI-749">
@@ -115,8 +116,10 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKy-fE-wmC">
                                 <rect key="frame" x="14" y="116" width="386" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                <color key="tintColor" red="0.39886892091023118" green="0.21217183034729639" blue="0.52158505154639179" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Random Cocktail"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xM7-xB-JWz">
                                 <rect key="frame" x="0.0" y="171" width="414" height="691"/>
@@ -140,7 +143,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8bR-Dr-PdJ"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dKy-fE-wmC" firstAttribute="top" secondItem="DTc-Vo-Mgr" secondAttribute="bottom" constant="20" id="9ts-SM-uqk"/>
                             <constraint firstItem="8bR-Dr-PdJ" firstAttribute="bottom" secondItem="xM7-xB-JWz" secondAttribute="bottom" id="KZn-Zp-ZgC"/>
@@ -162,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cog-Mi-t56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718.84057971014499" y="50.892857142857139"/>
+            <point key="canvasLocation" x="1628.985507246377" y="50.892857142857139"/>
         </scene>
         <!--Collection View Meals-->
         <scene sceneID="2lE-kX-V8u">
@@ -199,17 +202,20 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hc-SX-NzE">
                                 <rect key="frame" x="14" y="116" width="386" height="35"/>
+                                <color key="tintColor" red="0.44440641108247425" green="0.12851512614057742" blue="0.16670214224303473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Random Meal"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-Ic-A5v">
                                 <rect key="frame" x="14" y="159" width="386" height="35"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Meal by Area"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sb1-61-TkF"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6hc-SX-NzE" firstAttribute="leading" secondItem="krt-fa-J3e" secondAttribute="leading" id="9I2-J6-H8J"/>
                             <constraint firstItem="Sb1-61-TkF" firstAttribute="trailing" secondItem="PHo-7E-mJC" secondAttribute="trailing" id="Fgg-I9-9vC"/>
@@ -229,25 +235,65 @@
                     </view>
                     <connections>
                         <outlet property="colletionView1" destination="PHo-7E-mJC" id="yRH-vH-lSm"/>
+                        <outlet property="textField" destination="krt-fa-J3e" id="H6e-vb-9oF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XfL-Tg-Gch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410.144927536232" y="50.892857142857139"/>
+            <point key="canvasLocation" x="2320.289855072464" y="50.892857142857139"/>
+        </scene>
+        <!--Mojito #3-->
+        <scene sceneID="YIa-za-ItK">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="loc-ct-ZAz" customClass="DetailsViewController" customModule="pods" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zgC-ZX-YCl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="D2q-M2-qC1"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mojito #3" id="cmD-KV-puj">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="RwY-Vl-V6H"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NgF-BK-dsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628.985507246377" y="715.84821428571422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LTA-bl-Ctd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Jf-lk-eNE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RMa-oQ-UsV">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="loc-ct-ZAz" kind="relationship" relationship="rootViewController" id="E4w-s8-Us5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XFz-LB-ztC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718.84057971014499" y="715.84821428571422"/>
         </scene>
     </scenes>
     <resources>
         <image name="dark-gradient-pink-dnxwbkga4y8iskaa-dnxwbkga4y8iskaa" width="900" height="563"/>
         <image name="drinks" width="357" height="246"/>
         <image name="meals" width="358" height="210"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

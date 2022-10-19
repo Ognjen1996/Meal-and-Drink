@@ -20,8 +20,21 @@ class MealCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
     }
-    public func configure(with image: UIImage){
-        imageView1.image = image
+    public func configure(with meal: MealModel){
+        let source = sourceLabel.attributedText = NSAttributedString(string: "Source", attributes:
+                                                                [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        let name = meal.strMeal
+        let area = meal.strArea
+        let link = meal.strMealThumb
+        guard
+            let name = name,
+            let area = area,
+            let link = link
+        else {return}
+        nameLabel.text = "Name: " + name
+        areaLabel.text = "Area: " + area
+        let url = URL(string: link)
+        imageView1.kf.setImage(with: url)
     }
     
     static func nib() -> UINib {

@@ -12,31 +12,60 @@ import SwiftyJSON
 final class CollectionViewDrinks: UIViewController {
     
         @IBOutlet var colletionView: UICollectionView!
-    //    @IBOutlet var randomDrink: UIButton!
+        @IBOutlet var randomDrinkButton: UIButton!
         @IBOutlet var textField: UITextField!
-        var drinks: [DrinkModel] = []
+    
+    var filterString: String?
+        @IBOutlet var button: UIButton!
+    
+    var drinks: [DrinkModel] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.colletionView.reloadData()
+            }
+        }
+    }
+    private var filteredDrinks: [DrinkModel] {
+        guard let filter = filterString else {
+            return drinks
+        }
+        var arr: [DrinkModel] = []
+        for cc in drinks {
+            guard let mm = cc.strDrink else {return drinks}
+            if mm.contains(filter){
+                arr.append(cc)
+            }
+            
+        }
+        return arr
+        
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 120, height: 120)
         colletionView.collectionViewLayout = layout
         
-        colletionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
+        colletionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.cellIdentifier)
         colletionView.delegate = self
         colletionView.dataSource = self
         
-
+        fetchData()
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func randomDrink() {
-        //random number generator ide u switch i na osnovu toga prikazuje se odredjeno pice
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        fetchData(usingText: searchText)
     }
-    func fetchData() {
-        let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+    
+    func fetchData(usingText: String = "") {
+        self.drinks.removeAll()
+        let baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(usingText)"
         guard let url = URL(string: baseURL) else {return}
         let request = URLRequest(url: url)
         AF.request(request).responseJSON { data in
@@ -50,15 +79,23 @@ final class CollectionViewDrinks: UIViewController {
                     let parsedDrink = DrinkModel(json: drink)
                     self.drinks.append(parsedDrink)
                 }
+                
             case .failure(let error):
                 break
             }
         }
     }
-
+    
+    
+    
+    @IBAction func drinkDetails() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? UIViewController else { return }
+        show(vc, sender: self)
+//        navigationController?.pushViewController(vc, animated: true)
 }
 
-
+}
 
 extension CollectionViewDrinks: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -67,19 +104,14 @@ extension CollectionViewDrinks: UICollectionViewDelegate {
 }
 extension CollectionViewDrinks: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return self.filteredDrinks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-
-       
-        cell.configure(with: UIImage(named: "cocktail1")!)
-        cell.label.text = "Mojito"
         
+        let drink = self.filteredDrinks[indexPath.row]
+        cell.configure(with: drink)
         
         return cell
     }
