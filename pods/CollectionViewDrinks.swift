@@ -9,10 +9,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol DrinksDelegate {
+    func drink(drink: DrinkModel?)
+}
+
 final class CollectionViewDrinks: UIViewController {
     
+    var delegate: DrinksDelegate?
+    
         @IBOutlet var colletionView: UICollectionView!
-        @IBOutlet var randomDrinkButton: UIButton!
         @IBOutlet var textField: UITextField!
     
     var filterString: String?
@@ -24,22 +29,6 @@ final class CollectionViewDrinks: UIViewController {
                 self.colletionView.reloadData()
             }
         }
-    }
-    private var filteredDrinks: [DrinkModel] {
-        guard let filter = filterString else {
-            return drinks
-        }
-        var arr: [DrinkModel] = []
-        for cc in drinks {
-            guard let mm = cc.strDrink else {return drinks}
-            if mm.contains(filter){
-                arr.append(cc)
-            }
-            
-        }
-        return arr
-        
-
     }
 
     override func viewDidLoad() {
@@ -58,6 +47,8 @@ final class CollectionViewDrinks: UIViewController {
         fetchData()
         // Do any additional setup after loading the view.
     }
+    
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         let searchText = textField.text ?? ""
         fetchData(usingText: searchText)
@@ -86,11 +77,9 @@ final class CollectionViewDrinks: UIViewController {
         }
     }
     
-    
-    
     @IBAction func drinkDetails() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? UIViewController else { return }
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetails") as? UIViewController else { return }
         show(vc, sender: self)
 //        navigationController?.pushViewController(vc, animated: true)
 }
@@ -99,18 +88,25 @@ final class CollectionViewDrinks: UIViewController {
 
 extension CollectionViewDrinks: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
+        let DRINK = self.drinks[indexPath.row]
+        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "DrinkDetails") as! DrinkDetails
+//        navigationController?.pushViewController(next, animated: true)
+        next.DRINK = DRINK
+//        self.present(next,animated: true, completion: nil)
+        show(next, sender: self)
+        
     }
 }
 extension CollectionViewDrinks: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filteredDrinks.count
+        return self.drinks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
         
-        let drink = self.filteredDrinks[indexPath.row]
+        let drink = self.drinks[indexPath.row]
         cell.configure(with: drink)
         
         return cell

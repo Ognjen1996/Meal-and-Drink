@@ -23,9 +23,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func drinksMenu() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "CollectionViewDrinks") as? UIViewController else { return }
-        show(vc, sender: self)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let vc = storyboard.instantiateViewController(withIdentifier: "CollectionViewDrinks") as? UIViewController else { return }
+//        show(vc, sender: self)
         
     }
     @IBAction func mealsMenu() {

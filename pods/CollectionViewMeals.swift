@@ -83,11 +83,6 @@ extension CollectionViewMeals: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
         
-//        cell.nameLabel.text = "Name: Corba"
-//        cell.areaLabel.text = "Area: Turkish"
-//        cell.sourceLabel.text = "Source"
-//        cell.sourceLabel.toggleUnderline(self)
-        
         let meals = self.meals[indexPath.row]
         cell.configure(with: meals)
         
