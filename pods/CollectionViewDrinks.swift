@@ -91,9 +91,7 @@ extension CollectionViewDrinks: UICollectionViewDelegate {
         let DRINK = self.drinks[indexPath.row]
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "DrinkDetails") as! DrinkDetails
-//        navigationController?.pushViewController(next, animated: true)
         next.DRINK = DRINK
-//        self.present(next,animated: true, completion: nil)
         show(next, sender: self)
         
     }
