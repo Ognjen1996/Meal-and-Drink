@@ -14,6 +14,7 @@ final class CollectionViewMeals: UIViewController {
     @IBOutlet var colletionView1: UICollectionView!
     @IBOutlet var textField: UITextField!
 //    @IBOutlet var btnCounter: UIButton!
+    @IBOutlet var areaButton: UIButton!
     
     var meals:[MealModel] = [] {
         didSet {
@@ -75,7 +76,14 @@ final class CollectionViewMeals: UIViewController {
         show(next, sender: self)
 
     }
+    
+    @IBAction func mealByArea() {
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "SearchByAreaViewController") as! SearchByAreaViewController
+        show(next, sender: self)
+        
+    }
 }
+
 
 extension CollectionViewMeals: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
