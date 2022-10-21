@@ -120,6 +120,9 @@
                                 <color key="tintColor" red="0.39886892091023118" green="0.21217183034729639" blue="0.52158505154639179" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Random Cocktail"/>
+                                <connections>
+                                    <action selector="radnomDrink" destination="6Nn-N8-a8x" eventType="touchUpInside" id="ed2-nQ-OID"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xM7-xB-JWz">
                                 <rect key="frame" x="0.0" y="215" width="414" height="647"/>
@@ -247,6 +250,40 @@
             </objects>
             <point key="canvasLocation" x="5050.7246376811599" y="50.892857142857139"/>
         </scene>
+        <!--Source View Controller-->
+        <scene sceneID="ZsK-3T-ZOp">
+            <objects>
+                <viewController storyboardIdentifier="SourceViewController" id="9mu-5d-U94" customClass="SourceViewController" customModule="pods" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Mg-1X-phT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04k-x4-8BS">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kWf-Zn-qWI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kWf-Zn-qWI" firstAttribute="trailing" secondItem="04k-x4-8BS" secondAttribute="trailing" id="AII-Wr-dli"/>
+                            <constraint firstItem="kWf-Zn-qWI" firstAttribute="bottom" secondItem="04k-x4-8BS" secondAttribute="bottom" id="S7T-cR-Gpw"/>
+                            <constraint firstItem="04k-x4-8BS" firstAttribute="top" secondItem="kWf-Zn-qWI" secondAttribute="top" id="idN-gT-Dbh"/>
+                            <constraint firstItem="04k-x4-8BS" firstAttribute="leading" secondItem="kWf-Zn-qWI" secondAttribute="leading" id="vbB-hd-aPY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webkit" destination="04k-x4-8BS" id="t7e-E1-JoE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAv-Jp-nfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5786" y="51"/>
+        </scene>
         <!--Meal Details View Controller-->
         <scene sceneID="cg2-YX-0mZ">
             <objects>
@@ -267,7 +304,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="O3k-be-8S5"/>
                                                 </constraints>
-                                                <wkWebViewConfiguration key="configuration">
+                                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
                                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                     <wkPreferences key="preferences"/>
                                                 </wkWebViewConfiguration>

@@ -18,21 +18,10 @@ class MealDetailsViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
 
         details()
-//        let url = MEAL?.strYoutube
-//        guard let url = url else {return}
-//        let myURL = URL(string: url)
-//        guard let myURL = myURL else {return}
-//        let myRequest = URLRequest(url: myURL)
-//        webView.load(myRequest)
+
     }
     var MEAL: MealModel?
     
-//    override func loadView() {
-//        let webConfiguration = WKWebViewConfiguration()
-//        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-//        webView.uiDelegate = self
-//        view = webView
-//    }
     
     func details() {
         guard let meal = MEAL else { return }

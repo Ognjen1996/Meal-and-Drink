@@ -13,6 +13,7 @@ final class CollectionViewMeals: UIViewController {
     
     @IBOutlet var colletionView1: UICollectionView!
     @IBOutlet var textField: UITextField!
+//    @IBOutlet var btnCounter: UIButton!
     
     var meals:[MealModel] = [] {
         didSet {
@@ -67,7 +68,6 @@ final class CollectionViewMeals: UIViewController {
             }
         }
     }
-
 }
 
 extension CollectionViewMeals: UICollectionViewDelegate {
@@ -77,6 +77,7 @@ extension CollectionViewMeals: UICollectionViewDelegate {
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as! MealDetailsViewController
         next.MEAL = MEAL
+        
         show(next, sender: self)
         
     }
@@ -89,6 +90,7 @@ extension CollectionViewMeals: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
         
+        cell.delegate = self
         let meals = self.meals[indexPath.row]
         cell.configure(with: meals)
         
@@ -100,3 +102,13 @@ extension CollectionViewMeals: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.size.width/1, height:250)
     }
 }
+
+extension CollectionViewMeals: MealCollectionViewCellDelegate {
+    func mealCollectionViewCell(_ cell: MealCollectionViewCell, didTapOnSourceButtonWithSourceData source: String) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SourceViewController") as! SourceViewController
+        vc.sourceProtocol = source
+        show(vc, sender: self)
+        
+    }
+}
+ 

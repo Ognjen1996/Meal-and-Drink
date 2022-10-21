@@ -39,22 +39,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Corba" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8P-GR-KF6">
-                                <rect key="frame" x="0.0" y="80.666666666666671" width="143" height="20.333333333333329"/>
+                                <rect key="frame" x="0.0" y="80.666666666666671" width="143" height="34.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCU-H7-gSF">
+                                <rect key="frame" x="0.0" y="80.666666666666671" width="143" height="34.333333333333329"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YKS-d6-tK4" firstAttribute="top" secondItem="TPB-7q-XWi" secondAttribute="bottom" constant="10" id="5Py-Zb-aYT"/>
+                            <constraint firstItem="qCU-H7-gSF" firstAttribute="leading" secondItem="o8P-GR-KF6" secondAttribute="leading" id="81I-fk-C7S"/>
+                            <constraint firstItem="qCU-H7-gSF" firstAttribute="top" secondItem="o8P-GR-KF6" secondAttribute="top" id="H8m-Nm-vRE"/>
                             <constraint firstItem="TPB-7q-XWi" firstAttribute="top" secondItem="fkz-hh-yRq" secondAttribute="top" constant="20" id="P7D-Sh-Lwi"/>
                             <constraint firstItem="o8P-GR-KF6" firstAttribute="trailing" secondItem="YKS-d6-tK4" secondAttribute="trailing" id="PEi-2Y-oLv"/>
                             <constraint firstAttribute="trailing" secondItem="TPB-7q-XWi" secondAttribute="trailing" constant="10" id="Q1M-YZ-dRV"/>
                             <constraint firstItem="YKS-d6-tK4" firstAttribute="trailing" secondItem="TPB-7q-XWi" secondAttribute="trailing" id="X8S-LK-ivc"/>
+                            <constraint firstItem="qCU-H7-gSF" firstAttribute="bottom" secondItem="o8P-GR-KF6" secondAttribute="bottom" id="bwq-8b-TP1"/>
                             <constraint firstItem="o8P-GR-KF6" firstAttribute="leading" secondItem="YKS-d6-tK4" secondAttribute="leading" id="euK-2M-w5e"/>
                             <constraint firstItem="YKS-d6-tK4" firstAttribute="leading" secondItem="TPB-7q-XWi" secondAttribute="leading" id="lbf-VM-1OO"/>
                             <constraint firstItem="TPB-7q-XWi" firstAttribute="leading" secondItem="fkz-hh-yRq" secondAttribute="leading" id="nu1-0G-0vB"/>
+                            <constraint firstItem="qCU-H7-gSF" firstAttribute="trailing" secondItem="o8P-GR-KF6" secondAttribute="trailing" id="qJD-xg-MfN"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o8P-GR-KF6" secondAttribute="bottom" id="rnX-sK-Gio"/>
                             <constraint firstItem="o8P-GR-KF6" firstAttribute="top" secondItem="YKS-d6-tK4" secondAttribute="bottom" constant="10" id="zZU-fV-XgK"/>
                         </constraints>
@@ -78,6 +87,7 @@
             <size key="customSize" width="404" height="265"/>
             <connections>
                 <outlet property="areaLabel" destination="YKS-d6-tK4" id="2V5-9b-esg"/>
+                <outlet property="btnCounter" destination="qCU-H7-gSF" id="wMd-1E-NWW"/>
                 <outlet property="imageView1" destination="hp4-z7-ybc" id="GGK-tE-NI5"/>
                 <outlet property="nameLabel" destination="TPB-7q-XWi" id="X9V-cM-g4c"/>
                 <outlet property="sourceLabel" destination="o8P-GR-KF6" id="7fk-ME-0NR"/>

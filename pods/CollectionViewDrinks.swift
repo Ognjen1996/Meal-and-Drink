@@ -30,6 +30,7 @@ final class CollectionViewDrinks: UIViewController {
             }
         }
     }
+    var randomDrink: DrinkModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,14 @@ final class CollectionViewDrinks: UIViewController {
                 break
             }
         }
+    }
+    
+    @IBAction func radnomDrink()  {
+        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "DrinkDetails") as! DrinkDetails
+        next.isRandom = true
+        show(next, sender: self)
+
     }
     
     @IBAction func drinkDetails() {

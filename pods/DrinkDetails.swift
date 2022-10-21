@@ -7,6 +7,8 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
 class DrinkDetails: UIViewController  {
     
@@ -20,12 +22,18 @@ class DrinkDetails: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        details()
+        if isRandom {
+            fetchRandomCocktail()
+        } else {
+            details()
+        }
         
     }
     
     var DRINK: DrinkModel?
-    var MEAL: MealModel?
+    
+//    var MEAL: MealModel?
+    var isRandom: Bool = false
     
 }
 
@@ -58,6 +66,30 @@ extension DrinkDetails {
         instructionsLabel.text = "Instructions: \n" + inst + "\n"
         glassLabel.text = "Glass: \n" + glass + "\n"
         ingredientLabel.text = "Ingredients: \n" + ingredients + ingredients1 + ingredients2
+        
+    }
+    
+    private func fetchRandomCocktail() {
+        isRandom = false
+        let baseURL = "https://thecocktaildb.com/api/json/v1/1/random.php"
+        guard let url = URL(string: baseURL) else {return}
+        let request = URLRequest(url: url)
+        AF.request(request).responseJSON { data in
+            switch data.result {
+            case .success(let dataJson):
+                let json = JSON(dataJson)
+                
+                let drinksArray = json["drinks"].arrayValue
+                
+                drinksArray.forEach { drink in
+                    let parsedDrink = DrinkModel(json: drink)
+                    self.DRINK = parsedDrink
+                }
+                self.details()
+            case .failure(let error):
+                break
+            }
+        }
         
     }
 }
