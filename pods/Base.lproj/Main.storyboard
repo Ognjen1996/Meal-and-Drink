@@ -212,6 +212,9 @@
                                 <color key="tintColor" red="0.44440641108247425" green="0.12851512614057742" blue="0.16670214224303473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Random Meal"/>
+                                <connections>
+                                    <action selector="radnomMeal" destination="QzL-2K-zfT" eventType="touchUpInside" id="Jhg-C9-rNj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-Ic-A5v">
                                 <rect key="frame" x="14" y="159" width="386" height="35"/>

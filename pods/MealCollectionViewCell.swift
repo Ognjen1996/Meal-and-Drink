@@ -8,10 +8,11 @@
 import UIKit
 
 protocol MealCollectionViewCellDelegate: AnyObject {
-    func mealCollectionViewCell(_ cell: MealCollectionViewCell, didTapOnSourceButtonWithSourceData source: String)
+    func MealCollectionViewCell(cell: MealCollectionViewCell, source: String)
 }
 
 class MealCollectionViewCell: UICollectionViewCell {
+    
     
     @IBOutlet var imageView1: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -55,7 +56,7 @@ class MealCollectionViewCell: UICollectionViewCell {
 
     @objc private func sourceButtonHandler() {
         let sourceData = self.mealData.strSource ?? ""
-        self.delegate?.mealCollectionViewCell(
-            self, didTapOnSourceButtonWithSourceData: sourceData)
+        self.delegate?.MealCollectionViewCell(cell: self, source: sourceData)
+        
     }
 }

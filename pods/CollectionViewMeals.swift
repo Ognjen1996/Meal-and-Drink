@@ -34,7 +34,7 @@ final class CollectionViewMeals: UIViewController {
         layout.itemSize = CGSize(width: 120, height: 120)
         colletionView1.collectionViewLayout = layout
         
-        colletionView1.register(MealCollectionViewCell.nib(), forCellWithReuseIdentifier: "MealCollectionViewCell")
+        colletionView1.register(pods.MealCollectionViewCell.nib(), forCellWithReuseIdentifier: "MealCollectionViewCell")
         colletionView1.delegate = self
         colletionView1.dataSource = self
         
@@ -68,6 +68,13 @@ final class CollectionViewMeals: UIViewController {
             }
         }
     }
+    
+@IBAction func radnomMeal()  {
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as! MealDetailsViewController
+        next.isRandom = true
+        show(next, sender: self)
+
+    }
 }
 
 extension CollectionViewMeals: UICollectionViewDelegate {
@@ -89,7 +96,6 @@ extension CollectionViewMeals: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MealCollectionViewCell", for: indexPath) as! MealCollectionViewCell
-        
         cell.delegate = self
         let meals = self.meals[indexPath.row]
         cell.configure(with: meals)
@@ -104,11 +110,10 @@ extension CollectionViewMeals: UICollectionViewDelegateFlowLayout {
 }
 
 extension CollectionViewMeals: MealCollectionViewCellDelegate {
-    func mealCollectionViewCell(_ cell: MealCollectionViewCell, didTapOnSourceButtonWithSourceData source: String) {
+    func MealCollectionViewCell(cell: MealCollectionViewCell, source: String) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SourceViewController") as! SourceViewController
         vc.sourceProtocol = source
         show(vc, sender: self)
-        
     }
 }
  
