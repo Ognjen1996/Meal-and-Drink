@@ -17,7 +17,7 @@ class SearchByAreaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchDataMeal()
         // Do any additional setup after loading the view.
     }
     
