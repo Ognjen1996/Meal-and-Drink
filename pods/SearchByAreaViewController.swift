@@ -13,10 +13,16 @@ class SearchByAreaViewController: UIViewController {
 
    @IBOutlet private weak var tableView: UITableView!
     
-    var areas: [String] = []
+    var areas: [String] = [] {
+        didSet{
+            if !isViewLoaded {return}
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchDataMeal()
         // Do any additional setup after loading the view.
     }
@@ -50,6 +56,11 @@ extension SearchByAreaViewController: UITableViewDelegate {
 }
 
 extension SearchByAreaViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return areas.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: AreaTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AreaTableViewCell", for: indexPath) as! AreaTableViewCell
@@ -58,7 +69,5 @@ extension SearchByAreaViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return areas.count
-    }
+
 }
