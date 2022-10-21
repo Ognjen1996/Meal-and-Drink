@@ -73,6 +73,12 @@ final class CollectionViewMeals: UIViewController {
 extension CollectionViewMeals: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let MEAL = self.meals[indexPath.row]
+        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as! MealDetailsViewController
+        next.MEAL = MEAL
+        show(next, sender: self)
+        
     }
 }
 extension CollectionViewMeals: UICollectionViewDataSource {

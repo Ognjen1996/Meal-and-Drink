@@ -25,6 +25,7 @@ class DrinkDetails: UIViewController  {
     }
     
     var DRINK: DrinkModel?
+    var MEAL: MealModel?
     
 }
 
