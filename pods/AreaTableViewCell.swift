@@ -16,10 +16,8 @@ class AreaTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func populateCell(with areas: [String]) {
-        for i in areas {
-            label.text = i
-        }
+    func populateCell(with areas: String) {
+            label.text = areas
     }
     
 

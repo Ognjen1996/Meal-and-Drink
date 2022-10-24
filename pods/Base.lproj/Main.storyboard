@@ -303,16 +303,16 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lE8-st-Xao">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="21.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AreaTableViewCell" id="lE8-st-Xao" customClass="AreaTableViewCell" customModule="pods" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="24.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lE8-st-Xao" id="EgD-Ji-tMC" customClass="AreaTableViewCell" customModule="pods" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="21.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lE8-st-Xao" id="EgD-Ji-tMC">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="24.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5i-YH-1OK">
-                                                    <rect key="frame" x="16" y="0.0" width="398" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="0.0" width="398" height="24.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -323,10 +323,10 @@
                                                 <constraint firstItem="b5i-YH-1OK" firstAttribute="top" secondItem="EgD-Ji-tMC" secondAttribute="top" id="WwS-YB-9Xe"/>
                                                 <constraint firstAttribute="bottom" secondItem="b5i-YH-1OK" secondAttribute="bottom" id="t3i-eN-tpm"/>
                                             </constraints>
-                                            <connections>
-                                                <outlet property="label" destination="b5i-YH-1OK" id="O73-KH-ega"/>
-                                            </connections>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="b5i-YH-1OK" id="VTv-Td-MMb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

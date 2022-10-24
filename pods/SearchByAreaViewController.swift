@@ -24,6 +24,8 @@ class SearchByAreaViewController: UIViewController {
         super.viewDidLoad()
         
         fetchDataMeal()
+        
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -52,7 +54,10 @@ class SearchByAreaViewController: UIViewController {
 }
 
 extension SearchByAreaViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cc = indexPath.row
+        
+    }
 }
 
 extension SearchByAreaViewController: UITableViewDataSource {
@@ -64,7 +69,7 @@ extension SearchByAreaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: AreaTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AreaTableViewCell", for: indexPath) as! AreaTableViewCell
-        let cc = areas
+        let cc = areas[indexPath.row]
         cell.populateCell(with: cc)
         return cell
     }
