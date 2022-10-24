@@ -12,7 +12,6 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
-//    @IBOutlet var button: UIButton!
     
     static let cellIdentifier = "MyCollectionViewCell"
     
@@ -22,7 +21,6 @@ class MyCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
     }
     public func configure(with drink: DrinkModel) {
-//        imageView.image = image
         label.text = drink.strDrink
         
         let link = drink.strDrinkThumb

@@ -27,12 +27,9 @@ class DrinkDetails: UIViewController  {
         } else {
             details()
         }
-        
     }
-    
+
     var DRINK: DrinkModel?
-    
-//    var MEAL: MealModel?
     var isRandom: Bool = false
     
 }
@@ -90,6 +87,5 @@ extension DrinkDetails {
                 break
             }
         }
-        
     }
 }

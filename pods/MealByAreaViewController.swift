@@ -30,15 +30,13 @@ class MealByAreaViewController: UIViewController {
         guard let selectedArea = selectedArea else {
             return
         }
+        self.title = selectedArea + " Meal Area"
         fetchDataMeal(usingText: selectedArea)
         
         collectionView.register(pods.MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        
 
-        // Do any additional setup after loading the view.
     }
     
     func fetchDataMeal(usingText: String = "") {
@@ -63,7 +61,6 @@ class MealByAreaViewController: UIViewController {
             }
         }
     }
-
 }
 extension MealByAreaViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -72,10 +69,8 @@ extension MealByAreaViewController: UICollectionViewDelegate {
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as! MealDetailsViewController
         guard let id = MEAL.idMeal else {return}
-//        next.MEAL = MEAL
         next.id = id
 
-        
         show(next, sender: self)
     }
 }
