@@ -115,7 +115,7 @@ extension CollectionViewMeals: UICollectionViewDataSource {
 extension CollectionViewMeals: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewFrame = collectionView.frame
-        return CGSize(width: collectionViewFrame.size.width/1, height: collectionViewFrame.height / 1 )
+        return CGSize(width: collectionViewFrame.size.width/1, height: collectionViewFrame.height / 1.8 )
     }
 }
 

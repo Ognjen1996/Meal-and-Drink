@@ -22,6 +22,7 @@ class MealByAreaViewController: UIViewController {
             }
         }
     }
+    var mealsByID: MealModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +71,10 @@ extension MealByAreaViewController: UICollectionViewDelegate {
         let MEAL = self.meals[indexPath.row]
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as! MealDetailsViewController
-        next.MEAL = MEAL
+        guard let id = MEAL.idMeal else {return}
+//        next.MEAL = MEAL
+        next.id = id
+
         
         show(next, sender: self)
     }
@@ -95,7 +99,7 @@ extension MealByAreaViewController: UICollectionViewDelegateFlowLayout {
         let layout = collectionViewLayout as! GridLayout
 
         let availableWidth = collectionView.bounds.size.width
-        let columns = 3
+        let columns = 2
         var itemTotalWidth = availableWidth - CGFloat(columns) * layout.minimumInteritemSpacing
         itemTotalWidth -= (layout.sectionInset.left + layout.sectionInset.right)
 
