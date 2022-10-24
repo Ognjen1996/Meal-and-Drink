@@ -13,6 +13,7 @@ class SearchByAreaViewController: UIViewController {
 
    @IBOutlet private weak var tableView: UITableView!
     
+    
     var areas: [String] = [] {
         didSet{
             if !isViewLoaded {return}
@@ -25,6 +26,7 @@ class SearchByAreaViewController: UIViewController {
         
         fetchDataMeal()
         
+        tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
@@ -55,7 +57,19 @@ class SearchByAreaViewController: UIViewController {
 
 extension SearchByAreaViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cc = indexPath.row
+        let selectedArea = areas[indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MealByAreaViewController") as! MealByAreaViewController
+        vc.selectedArea = selectedArea
+        
+//        CATransaction.begin()
+//        CATransaction.setCompletionBlock {
+//
+//        }
+        show(vc, sender: self)
+
+//        CATransaction.commit()
+        
+        
         
     }
 }
@@ -63,13 +77,13 @@ extension SearchByAreaViewController: UITableViewDelegate {
 extension SearchByAreaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return areas.count
+        return self.areas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: AreaTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AreaTableViewCell", for: indexPath) as! AreaTableViewCell
-        let cc = areas[indexPath.row]
+        let cc = self.areas[indexPath.row]
         cell.populateCell(with: cc)
         return cell
     }

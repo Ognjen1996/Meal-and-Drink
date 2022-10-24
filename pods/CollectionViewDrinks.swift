@@ -121,6 +121,7 @@ extension CollectionViewDrinks: UICollectionViewDataSource {
 }
 extension CollectionViewDrinks: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width/2.2, height: 300)
+        let collectionViewFrame = collectionView.frame
+        return CGSize(width: collectionViewFrame.size.width/2.2, height: collectionViewFrame.height / 2)
     }
 }

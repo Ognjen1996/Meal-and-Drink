@@ -31,6 +31,15 @@ class MyCollectionViewCell: UICollectionViewCell {
         let url = URL(string: link)
         imageView.kf.setImage(with: url)
     }
+    public func configureMeal(with meal: MealModel) {
+        label.text = meal.strMeal
+        let link = meal.strMealThumb
+        guard let link = link else { return }
+        
+        let url = URL(string: link)
+        imageView.kf.setImage(with: url)
+        
+    }
     
     static func nib() -> UINib {
         return UINib(nibName: "MyCollectionViewCell", bundle: nil)

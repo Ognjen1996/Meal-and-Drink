@@ -15,6 +15,7 @@ final class CollectionViewMeals: UIViewController {
     @IBOutlet var textField: UITextField!
 //    @IBOutlet var btnCounter: UIButton!
     @IBOutlet var areaButton: UIButton!
+    var selectedArea: String?
     
     var meals:[MealModel] = [] {
         didSet {
@@ -113,7 +114,8 @@ extension CollectionViewMeals: UICollectionViewDataSource {
 }
 extension CollectionViewMeals: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width/1, height:250)
+        let collectionViewFrame = collectionView.frame
+        return CGSize(width: collectionViewFrame.size.width/1, height: collectionViewFrame.height / 1 )
     }
 }
 
