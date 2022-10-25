@@ -34,7 +34,7 @@ final class CollectionViewDrinks: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Drinks"
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         let layout = UICollectionViewFlowLayout()

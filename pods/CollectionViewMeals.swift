@@ -28,7 +28,7 @@ final class CollectionViewMeals: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Meals"
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         

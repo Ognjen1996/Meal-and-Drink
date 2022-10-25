@@ -17,7 +17,7 @@ class SourceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Source"
         source()
 
         // Do any additional setup after loading the view.

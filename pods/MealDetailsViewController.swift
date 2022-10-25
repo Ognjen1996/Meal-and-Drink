@@ -40,6 +40,7 @@ class MealDetailsViewController: UIViewController, WKUIDelegate {
     
     func details() {
         guard let meal = MEAL else { return }
+        title = meal.strMeal
         let inst = meal.strInstructions
         guard let inst = inst else { return }
         intstructionLabel.text = "\n" + inst 
