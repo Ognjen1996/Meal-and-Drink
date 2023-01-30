@@ -61,15 +61,8 @@ extension SearchByAreaViewController: UITableViewDelegate {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MealByAreaViewController") as! MealByAreaViewController
         vc.selectedArea = selectedArea
         
-//        CATransaction.begin()
-//        CATransaction.setCompletionBlock {
-//
-//        }
         show(vc, sender: self)
 
-//        CATransaction.commit()
-        
-        
         
     }
 }

@@ -10,7 +10,7 @@ import WebKit
 
 class SourceViewController: UIViewController {
     
-    @IBOutlet var webkit: WKWebView!
+    @IBOutlet weak var webkit: WKWebView!
     var button: UIButton!
     var MEAL: MealModel?
     var sourceProtocol: String?

@@ -58,7 +58,6 @@ extension DrinkDetails {
         title = drink.strDrink
         let url = URL(string: link)
         image.kf.setImage(with: url)
-        
         categoryLabel.text = "Category: \n" + cat + "\n"
         instructionsLabel.text = "Instructions: \n" + inst + "\n"
         glassLabel.text = "Glass: \n" + glass + "\n"

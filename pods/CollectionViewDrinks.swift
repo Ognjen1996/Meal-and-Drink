@@ -20,7 +20,7 @@ final class CollectionViewDrinks: UIViewController {
         @IBOutlet var colletionView: UICollectionView!
         @IBOutlet var textField: UITextField!
     
-    var filterString: String?
+        var filterString: String?
         @IBOutlet var button: UIButton!
     
     var drinks: [DrinkModel] = [] {
@@ -73,6 +73,7 @@ final class CollectionViewDrinks: UIViewController {
                 }
                 
             case .failure(let error):
+                debugPrint(error)
                 break
             }
         }

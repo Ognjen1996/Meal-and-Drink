@@ -70,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2433D8122937570A003AED95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24F92CD029069AA900E81346 /* GridLayout.swift */,
+				35EF024A28F56B5400294310 /* DrinkModel.swift */,
+				24DA181E29001AFB00519732 /* MealModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		353C1F7F28F4204C008FB4EC = {
 			isa = PBXGroup;
 			children = (
@@ -93,9 +103,7 @@
 			children = (
 				353C1F8B28F4204C008FB4EC /* AppDelegate.swift */,
 				353C1F8F28F4204C008FB4EC /* ViewController.swift */,
-				24F92CD029069AA900E81346 /* GridLayout.swift */,
-				35EF024A28F56B5400294310 /* DrinkModel.swift */,
-				24DA181E29001AFB00519732 /* MealModel.swift */,
+				2433D8122937570A003AED95 /* Models */,
 				353C1F9128F4204C008FB4EC /* Main.storyboard */,
 				24DA182029003BA600519732 /* DrinkDetails.swift */,
 				24FAEEBE29017CEE001762B3 /* MealDetailsViewController.swift */,
